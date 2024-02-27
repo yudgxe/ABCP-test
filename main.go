@@ -76,10 +76,9 @@ func (w *Worker) StartWoker() {
 			case <-w.done:
 				return
 			case ttype, ok := <-w.in:
-				if !ok {
-					return
+				if ok {
+					w.sort(w.work(ttype))
 				}
-				w.sort(w.work(ttype))
 			}
 		}
 	}()
