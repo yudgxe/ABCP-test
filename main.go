@@ -68,7 +68,7 @@ func (w *Worker) work(t Ttype) <-chan Ttype {
 	return out
 }
 
-func (w *Worker) StartWoker() {
+func (w *Worker) StartWorker() {
 	go func() {
 		log.Println("start worker")
 		for {
@@ -168,7 +168,7 @@ func main() {
 
 	// Стартуем воркера.
 	worker := NewWorker(context.Background(), superChan, taskSorter, taskWorker)
-	worker.StartWoker()
+	worker.StartWorker()
 
 	// Эмитируем полезную нагрузку.
 	time.Sleep(time.Second * 30)
